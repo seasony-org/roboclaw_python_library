@@ -45,7 +45,7 @@ def display_speed():
         print("failed")
 
 
-rc.Open()
+rc.open()
 address = 0x80
 
 version = rc.ReadVersion(address)
