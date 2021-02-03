@@ -9,11 +9,11 @@ class Roboclaw:
 	def __init__(self, comport, rate, timeout=0.01, retries=3):
 		self.comport = comport
 		self.rate = rate
-		self.timeout = timeout;
+		self.timeout = timeout
 		self._trystimeout = retries
-		self._crc = 0;
-
-	#Command Enums
+		self._crc = 0
+		self._port = None
+	# Command Enums
 	class Cmd():
 		M1FORWARD = 0
 		M1BACKWARD = 1
@@ -1073,10 +1073,11 @@ class Roboclaw:
 					break
 		return False	
 		
-	def Open(self):
+	def open(self):
 		try:
 			self._port = serial.Serial(port=self.comport, baudrate=self.rate, timeout=1, interCharTimeout=self.timeout)
-		except:
+		except serial.SerialException:
+			print("could not open port")
 			return 0
 		return 1
 
