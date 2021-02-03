@@ -3,7 +3,7 @@
 # *** The Min and Max Positions must be at least 0 and 50000
 
 import time
-from roboclaw import Roboclaw
+from roboclaw_3 import Roboclaw
 
 # Windows comport name
 rc = Roboclaw("COM3", 115200)
